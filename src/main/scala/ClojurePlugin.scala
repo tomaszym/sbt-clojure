@@ -8,7 +8,7 @@ object ClojurePlugin extends Plugin {
 
   private object ClojureDefaults extends Keys {
     val settings = Seq(
-      clojureVersion := "1.5.1",
+      clojureVersion := "1.6.0",
       libraryDependencies ++= Seq[ModuleID](
         "org.clojure" % "clojure" % clojureVersion.value % Config.name
       )
@@ -40,7 +40,7 @@ object ClojurePlugin extends Plugin {
           new ClojureC(classpath, sourceDirectory, stubDirectory, destinationDirectory).compile
         }
       },
-      compile in Compile <<= (compile in Compile) dependsOn (clojurec in Compile)
+      clojurec in Compile <<= (clojurec in Compile) dependsOn (compile in Compile)
     )
   }
 
