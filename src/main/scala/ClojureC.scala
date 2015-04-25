@@ -32,7 +32,7 @@ class ClojureC(val classpath : Seq[File], val sourceDirectory : File, val stubDi
         IO.createDirectory(destinationDirectory)
         try{
           Thread.currentThread().setContextClassLoader(classLoader)
-          rtInitFunction.invoke(null)
+//          rtInitFunction.invoke(null)
           val compilerClass   = classLoader.loadClass("clojure.lang.Compiler")
           val loadFunction    = compilerClass.getDeclaredMethod("load", classOf[java.io.Reader])
           val compileFunction = compilerClass.getDeclaredMethod("compile", classOf[java.io.Reader], classOf[java.lang.String], classOf[java.lang.String])
